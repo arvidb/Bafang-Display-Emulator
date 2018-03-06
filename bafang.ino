@@ -70,12 +70,12 @@ union Serializable {
     const uint8_t *end() const { return bytes + sizeof(T); }
 };
 
-struct baf_pas_pkg_t {
+typedef struct {
     BAFCommand      type        = BAFCommand::WRITE;
     const uint8_t   cmd         = 0x08;
     BAFPasCommand   pas         = BAFPasCommand::PAS0;
     uint8_t         checksum    = 0;
-} __attribute__((__packed__));
+} __attribute__((__packed__)) baf_pas_pkg_t;
 typedef Serializable<baf_pas_pkg_t> baf_pas_pkg;
 
 typedef struct {
